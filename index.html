@@ -56,6 +56,22 @@
             transition: background-color 0.4s, color 0.4s;
         }
 
+        /* ستايل ساعة توقيت مصر */
+        .clock-display {
+            background-color: var(--panel);
+            color: var(--primary);
+            padding: 10px 25px;
+            border-radius: 20px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+            direction: ltr;
+            transition: background-color 0.4s, color 0.4s;
+            z-index: 5;
+            letter-spacing: 1px;
+        }
+
         .container {
             background-color: var(--panel);
             padding: 3rem 2rem;
@@ -267,11 +283,30 @@
         });
       }
     </script>
+
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <link rel="manifest" href="./manifest.json?v=v1793543740280">
+    <meta name="theme-color" content="#8197b1">
+    <link rel="apple-touch-icon" href="./icon-192.png?v=v1793543740280">
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('./sw.js?v=v1793543740280')
+            .then(reg => console.log('SW Registered'))
+            .catch(err => console.log('SW Failed', err));
+        });
+      }
+    </script>
 </head>
 <body>
 
     <!-- زر تبديل المظاهر -->
     <button class="theme-btn" onclick="switchTheme()">تبديل المظهر 🎨</button>
+
+    <!-- ساعة توقيت مصر -->
+    <div id="egyptClock" class="clock-display">00:00:00 AM</div>
 
     <div class="container">
         
@@ -316,6 +351,22 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
     <script>
+        // تحديث توقيت مصر الحي باللغة الإنجليزية
+        function updateEgyptClock() {
+            const options = {
+                timeZone: 'Africa/Cairo',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: true
+            };
+            const formatter = new Intl.DateTimeFormat('en-US', options);
+            const timeString = formatter.format(new Date());
+            document.getElementById('egyptClock').innerText = timeString;
+        }
+        setInterval(updateEgyptClock, 1000);
+        updateEgyptClock();
+
         // إعدادات سيرفر Supabase الخاص بك
         const supabaseUrl = 'https://smnpkmlqbihoyebwbtqj.supabase.co';
         const supabaseKey = 'sb_publishable_P3-KB6jY-RAqwDx2106oYQ_pLGVSC8V';
