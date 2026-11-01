@@ -1,21 +1,21 @@
 {
-  "name": "radio momatz",
-  "short_name": "radio momatz",
-  "description": "radio momatz",
-  "start_url": "./index.html?v=v1793454974299",
+  "name": "RADIO MOMTAZ",
+  "short_name": "RADIO MOMTAZ",
+  "description": "RADIO MOMTAZ",
+  "start_url": "./index.html?v=v1793538858082",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#ffffff",
-  "theme_color": "#3b82f6",
+  "theme_color": "#736fc4",
   "icons": [
     {
-      "src": "./icon-192.png?v=v1793454974299",
+      "src": "./icon-192.png?v=v1793538858082",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "./icon-512.png?v=v1793454974299",
+      "src": "./icon-512.png?v=v1793538858082",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
